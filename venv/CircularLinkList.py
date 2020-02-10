@@ -79,7 +79,7 @@ class LinkList:
                 sTemp = sTemp.next
             else:
                 if var!=None:
-                    print("lllll")
+
                     vP = temp.pid
                     vN = temp.name
                     vPr = temp.price
@@ -101,12 +101,24 @@ class LinkList:
     def iterateForward(self):
 
         temp = self.head
+        i=0
+        j=0
 
-        while temp.next != self.head:
+
+        # while temp.next != self.head:
+        #     temp.showProduct()
+        #     temp = temp.next
+        #
+        # temp.showProduct()
+        while i != LinkList.size:
+            # while j!= LinkList.size-i-1:
+            #     if temp.price > temp.next.price:
+
             temp.showProduct()
             temp = temp.next
+            i+=1
 
-        temp.showProduct()
+        # temp.showProduct()
 
     def iterateBackward(self):
         temp = self.current
@@ -153,6 +165,32 @@ class LinkList:
                 break
             temp = temp.next
 
+    def BubbleSort(self):
+        itemp = self.head
+        jtemp = self.head
+      
+
+        for i in range(0, LinkList.size):
+            for j in range(0, LinkList.size-i-1):
+
+                if jtemp.price > jtemp.next.price:
+
+                    vP = jtemp.pid
+                    vN = jtemp.name
+                    vPr = jtemp.price
+
+                    jtemp.pid = jtemp.next.pid
+                    jtemp.name = jtemp.next.name
+                    jtemp.price = jtemp.next.price
+
+                    jtemp.next.pid = vP
+                    jtemp.next.name = vN
+                    jtemp.next.price = vPr
+
+
+                jtemp = jtemp.next
+            itemp = itemp.next
+            jtemp = self.head
 
 lRef = LinkList()
 print(">> lRef is:", lRef)
@@ -164,7 +202,7 @@ print()
 lRef.appendStarting(Product(101, "AlphaBounce Shoe", 8000))
 lRef.appendStarting(Product(201, "iPhone X", 70000 , 2))
 lRef.appendStarting(Product(301, "Samsung LED", 50000))
-lRef.appendStarting(Product(401, "Samsung M10", 1000))
+lRef.appendStarting(Product(401, "Samsung M10", 100000))
 lRef.appendStarting(Product(501, "Lays", 20 , 10))
 
 # lRef.iterateForward()
@@ -172,18 +210,20 @@ lRef.appendStarting(Product(501, "Lays", 20 , 10))
 # lRef.deleteFromEnd()
 # lRef.deleteFromBeg()
 # lRef.deleteInBetween(201)
-print("###########")
-lRef.iterateForward()
-
-print(">> LINKED LIST SIZE:", LinkList.size)
-print(">> LINKED LIST ITEMS:", LinkList.item)
-print(">> LINKED LIST TOTAL PRICE:", LinkList.total)
+# print("###########")
+# lRef.iterateForward()
+#
+# print(">> LINKED LIST SIZE:", LinkList.size)
+# print(">> LINKED LIST ITEMS:", LinkList.item)
+# print(">> LINKED LIST TOTAL PRICE:", LinkList.total)
 
 # lRef.SelectionSort()
 # lRef.iterateForward()
-lRef.linearSearch("Lays")
-print()
-lRef.appendBegin(Product(601, "Laptop", 2 , 70000))
-lRef.iterateForward()
+# lRef.linearSearch("Lays")
+# print()
+# lRef.appendBegin(Product(601, "Laptop", 2 , 70000))
+# lRef.iterateForward()
 # lRef.binarySearch(lRef.SelectionSort())
-
+lRef.BubbleSort()
+# lRef.iterateBackward()
+lRef.iterateForward()
