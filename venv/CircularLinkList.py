@@ -192,6 +192,46 @@ class LinkList:
             itemp = itemp.next
             jtemp = self.head
 
+    def BubbleSort2(self):
+        itemp = self.head
+        p1 = self.head
+
+
+        for i in range(0, LinkList.size):
+
+            for j in range(0, LinkList.size - i - 1):
+                p2 = p1.next
+
+
+                if p1.price > p2.price:
+                    if p1 == self.head:
+                        self.head = p2
+
+                    if p1==self.head.next:
+                        self.head.next = p2
+
+                    if p2 ==  self.current:
+                        self.current = p1
+
+                    p1.previous.next = p2
+                    p2.next.previous = p1
+                    temp = p1
+
+                    p1.next = p2.next
+                    p1.previous = p2
+
+                    p2.next = temp
+                    p2.previous = temp.previous
+
+                    p1 = p2
+                    p2 = temp
+
+                p1 = p1.next
+
+            itemp = itemp.next
+            p1 = self.head
+
+
 lRef = LinkList()
 print(">> lRef is:", lRef)
 print(">> Dictionary of lRef is:", lRef.__dict__)
@@ -204,6 +244,11 @@ lRef.appendStarting(Product(201, "iPhone X", 70000 , 2))
 lRef.appendStarting(Product(301, "Samsung LED", 50000))
 lRef.appendStarting(Product(401, "Samsung M10", 100000))
 lRef.appendStarting(Product(501, "Lays", 20 , 10))
+lRef.appendStarting(Product(601, "Baleno", 2000000 , 10))
+# print("Head Is ", self.head , self.head.price)
+lRef.appendStarting(Product(701, "Alto", 20000 , 10))
+
+
 
 # lRef.iterateForward()
 # lRef.iterateBackward()
@@ -224,6 +269,6 @@ lRef.appendStarting(Product(501, "Lays", 20 , 10))
 # lRef.appendBegin(Product(601, "Laptop", 2 , 70000))
 # lRef.iterateForward()
 # lRef.binarySearch(lRef.SelectionSort())
-lRef.BubbleSort()
+lRef.BubbleSort2()
 # lRef.iterateBackward()
 lRef.iterateForward()
