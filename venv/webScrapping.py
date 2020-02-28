@@ -84,23 +84,3 @@ for tag in spantags:
 
 print(objectList)
 
-for obj in objectList:
-    hRef = HashTable()
-    hRef.put(obj)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
